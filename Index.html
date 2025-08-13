@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Microcap Portfolio</title>
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#0ea5a4" />
+  <link rel="stylesheet" href="/style.css" />
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js');
+      });
+    }
+  </script>
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <h1>Microcap Portfolio</h1>
+      <div class="summary">
+        <div id="invested">Invested: ₹0.00</div>
+        <div id="current">Current: ₹0.00</div>
+        <div id="pl" class="neutral">P/L: ₹0.00 (0.00%)</div>
+      </div>
+    </header>
+
+    <main>
+      <button id="addRow" class="btn">+ Add Stock</button>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Symbol (e.g. SDBL.NS)</th>
+            <th>Buy Price</th>
+            <th>Qty</th>
+            <th>CMP</th>
+            <th>% Chg</th>
+            <th>P/L ₹</th>
+            <th>P/L %</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+
+      <div style="margin-top:12px">
+        <button id="refresh" class="btn outline">Refresh Now</button>
+        <span id="status" class="muted">Auto-refresh every 60s</span>
+      </div>
+    </main>
+
+    <footer class="footer">Data via Twelve Data (proxied) • Saves to your device</footer>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
